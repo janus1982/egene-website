@@ -1,15 +1,17 @@
+import Link from "next/link";
+
 export default function Home() {
   return (
     <main>
       {/* Navigation */}
       <nav className="bg-white shadow-sm px-6 py-4 flex justify-between items-center">
-        <span className="text-xl font-bold text-green-800">Egene Ridecenter</span>
+        <Link href="/" className="text-xl font-bold text-green-800">Egene Ridecenter</Link>
         <ul className="flex gap-6 text-sm font-medium text-gray-600">
           <li><a href="#" className="hover:text-green-800">Rideskole</a></li>
           <li><a href="#" className="hover:text-green-800">Ridecenter</a></li>
           <li><a href="#" className="hover:text-green-800">Om os</a></li>
           <li><a href="#" className="hover:text-green-800">Events</a></li>
-          <li><a href="#" className="hover:text-green-800">Kontakt</a></li>
+          <li><Link href="/kontakt" className="hover:text-green-800">Kontakt</Link></li>
         </ul>
       </nav>
 
