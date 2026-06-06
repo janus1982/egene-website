@@ -3,6 +3,7 @@ import Link from "next/link";
 import SiteNav from "../components/SiteNav";
 import SiteFooter from "../components/SiteFooter";
 import PageHero from "../components/PageHero";
+import FadeIn from "../components/FadeIn";
 
 export const metadata = { title: "Spring & stævner" };
 
@@ -18,7 +19,7 @@ export default function Spring() {
       />
 
       <div className="max-w-3xl mx-auto px-6 py-20 space-y-16">
-        <section>
+        <FadeIn>
           <h2 className="text-2xl font-bold text-green-900 mb-4">Springning gennemsyrer alt</h2>
           <p className="text-gray-600 leading-relaxed">
             Egene er en springstald, og det mærkes overalt. Fra de første cavaletti til
@@ -26,9 +27,9 @@ export default function Spring() {
             drømmer om dit første gennemførte spring eller om at stille op til konkurrence,
             er der et stærkt miljø at vokse i.
           </p>
-        </section>
+        </FadeIn>
 
-        <section>
+        <FadeIn>
           <h2 className="text-2xl font-bold text-green-900 mb-4">Stævner</h2>
           <p className="text-gray-600 leading-relaxed">
             Vi afholder og deltager i stævner gennem hele året. Det er dage fyldt med
@@ -37,9 +38,9 @@ export default function Spring() {
           <p className="text-sm text-green-700 mt-3 italic">
             [Indsæt kommende stævnedatoer og resultater her]
           </p>
-        </section>
+        </FadeIn>
 
-        <section>
+        <FadeIn>
           <h2 className="text-2xl font-bold text-green-900 mb-4">Træningscamp</h2>
           <p className="text-gray-600 leading-relaxed">
             Vores træningscamps giver ekstra fokus og fremgang i koncentrerede forløb —
@@ -48,14 +49,14 @@ export default function Spring() {
           <p className="text-sm text-green-700 mt-3 italic">
             [Indsæt info om næste træningscamp]
           </p>
-        </section>
+        </FadeIn>
 
         {/* Billede-indslag */}
-        <section className="relative h-72 rounded-2xl overflow-hidden">
-          <Image src="/ryttere.jpg" alt="Ryttere går banen før spring" fill sizes="(min-width: 768px) 768px, 100vw" className="object-cover" />
-        </section>
+        <FadeIn className="relative h-72 rounded-2xl overflow-hidden group">
+          <Image src="/ryttere.jpg" alt="Ryttere går banen før spring" fill sizes="(min-width: 768px) 768px, 100vw" className="object-cover transition-transform duration-[400ms] ease-out group-hover:scale-105" />
+        </FadeIn>
 
-        <section>
+        <FadeIn>
           <h2 className="text-2xl font-bold text-green-900 mb-4">Året på Egene</h2>
           <p className="text-gray-600 leading-relaxed">
             Året byder på faste traditioner — fra kæphestestævner for de mindste til
@@ -64,15 +65,15 @@ export default function Spring() {
           <p className="text-sm text-green-700 mt-3 italic">
             [Indsæt jeres årskalender med de faste begivenheder]
           </p>
-        </section>
+        </FadeIn>
 
-        <section className="bg-green-900 text-white rounded-2xl px-8 py-12 text-center">
+        <FadeIn className="bg-green-900 text-white rounded-2xl px-8 py-12 text-center">
           <h2 className="text-2xl font-bold mb-4">Vil du være med?</h2>
           <p className="text-white/80 mb-6">Kom forbi og oplev springmiljøet på Egene.</p>
           <Link href="/kontakt" className="inline-block bg-white text-green-900 font-semibold px-8 py-3.5 rounded-full hover:bg-green-50 transition-colors">
             Kontakt os
           </Link>
-        </section>
+        </FadeIn>
       </div>
 
       <SiteFooter />

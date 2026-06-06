@@ -1,6 +1,7 @@
 import SiteNav from "../components/SiteNav";
 import SiteFooter from "../components/SiteFooter";
 import PageHero from "../components/PageHero";
+import FadeIn from "../components/FadeIn";
 
 export const metadata = { title: "Kontakt" };
 
@@ -25,7 +26,7 @@ export default function Kontakt() {
       />
 
       <div className="max-w-3xl mx-auto px-6 py-20 space-y-12">
-        <section className="grid sm:grid-cols-2 gap-8">
+        <FadeIn className="grid sm:grid-cols-2 gap-8">
           <div>
             <h2 className="text-xl font-bold text-green-900 mb-2">Adresse</h2>
             <p className="text-gray-600 leading-relaxed">
@@ -52,9 +53,9 @@ export default function Kontakt() {
               <a href="https://www.instagram.com/egeneridecenter_/" target="_blank" rel="noopener noreferrer" className="text-green-700 underline">Instagram</a>
             </p>
           </div>
-        </section>
+        </FadeIn>
 
-        <section>
+        <FadeIn>
           <h2 className="text-xl font-bold text-green-900 mb-4">Skriv til rette person</h2>
           <div className="divide-y divide-green-100 border border-green-100 rounded-2xl overflow-hidden">
             {emails.map(([navn, mail]) => (
@@ -64,9 +65,9 @@ export default function Kontakt() {
               </div>
             ))}
           </div>
-        </section>
+        </FadeIn>
 
-        <section>
+        <FadeIn>
           <h2 className="text-xl font-bold text-green-900 mb-4">Sådan finder du os</h2>
           <div className="rounded-2xl overflow-hidden border border-green-100">
             <iframe
@@ -87,7 +88,7 @@ export default function Kontakt() {
           >
             Åbn i Google Maps →
           </a>
-        </section>
+        </FadeIn>
       </div>
 
       <SiteFooter />

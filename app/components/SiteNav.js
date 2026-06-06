@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const links = [
   { href: "/rideskole", label: "Rideskole" },
@@ -13,20 +13,29 @@ const links = [
   { href: "/kontakt", label: "Kontakt" },
 ];
 
-export default function SiteNav({ variant = "solid" }) {
+export default function SiteNav() {
   const [open, setOpen] = useState(false);
-  const transparent = variant === "transparent";
+  const [scrolled, setScrolled] = useState(false);
 
-  const linkColor = transparent
-    ? "text-white hover:text-green-200 drop-shadow"
-    : "text-green-900 hover:text-green-600";
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 60);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  const linkClass = scrolled
+    ? "text-green-900 hover:text-green-600"
+    : "text-white hover:text-green-200 drop-shadow";
 
   return (
     <>
       <nav
         className={
-          (transparent ? "absolute bg-transparent" : "sticky bg-white shadow-md") +
-          " top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 md:px-10"
+          "fixed top-0 inset-x-0 z-50 flex items-center justify-between px-6 py-4 md:px-10 transition-all duration-300 " +
+          (scrolled
+            ? "bg-white/85 backdrop-blur-md shadow-md"
+            : "bg-transparent")
         }
       >
         <Link href="/" className="flex items-center">
@@ -35,7 +44,10 @@ export default function SiteNav({ variant = "solid" }) {
             alt="Egene Rideklub"
             width={56}
             height={56}
-            className={"object-contain" + (transparent ? " drop-shadow-lg" : "")}
+            className={
+              "object-contain drop-shadow-[0_1px_3px_rgba(0,0,0,0.45)] " +
+              (scrolled ? "logo-moerk" : "logo-lys")
+            }
           />
         </Link>
 
@@ -43,7 +55,7 @@ export default function SiteNav({ variant = "solid" }) {
         <ul className="hidden md:flex gap-6 text-sm font-medium">
           {links.map((l) => (
             <li key={l.href}>
-              <Link href={l.href} className={"transition-colors " + linkColor}>
+              <Link href={l.href} className={"transition-colors " + linkClass}>
                 {l.label}
               </Link>
             </li>
@@ -53,7 +65,10 @@ export default function SiteNav({ variant = "solid" }) {
         {/* Hamburger — mobil */}
         <button
           onClick={() => setOpen(!open)}
-          className={"md:hidden text-3xl leading-none " + (transparent ? "text-white drop-shadow" : "text-green-900")}
+          className={
+            "md:hidden text-3xl leading-none transition-colors " +
+            (scrolled ? "text-green-900" : "text-white drop-shadow")
+          }
           aria-label="Menu"
         >
           {open ? "✕" : "☰"}

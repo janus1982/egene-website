@@ -2,6 +2,7 @@ import Link from "next/link";
 import SiteNav from "../components/SiteNav";
 import SiteFooter from "../components/SiteFooter";
 import PageHero from "../components/PageHero";
+import FadeIn from "../components/FadeIn";
 
 export const metadata = { title: "Opstaldning" };
 
@@ -34,16 +35,16 @@ export default function Opstaldning() {
       />
 
       <div className="max-w-3xl mx-auto px-6 py-20 space-y-16">
-        <section>
+        <FadeIn>
           <h2 className="text-2xl font-bold text-green-900 mb-4">Din hest i gode hænder</h2>
           <p className="text-gray-600 leading-relaxed">
             Der er plads til cirka 45 heste på Egene Ridecenter. Vi tilbyder fuldpas alle
             ugens 7 dage inkl. helligdage — alt sammen i smukke rammer under de gamle
             egetræer.
           </p>
-        </section>
+        </FadeIn>
 
-        <section>
+        <FadeIn>
           <h2 className="text-2xl font-bold text-green-900 mb-4">Priser</h2>
           <p className="text-sm text-gray-500 mb-4">Gældende fra 1. juni 2026</p>
           <div className="grid sm:grid-cols-2 gap-4">
@@ -60,9 +61,9 @@ export default function Opstaldning() {
             Inkluderer basis-foder, wrap, træpiller, udmugning 7 dage, foldordning, ud- og
             indlukning samt adgang til alle faciliteter.
           </p>
-        </section>
+        </FadeIn>
 
-        <section>
+        <FadeIn>
           <h2 className="text-2xl font-bold text-green-900 mb-4">Tillægsydelser</h2>
           <div className="divide-y divide-green-100 border border-green-100 rounded-2xl overflow-hidden">
             {tillaeg.map(([navn, pris]) => (
@@ -72,9 +73,9 @@ export default function Opstaldning() {
               </div>
             ))}
           </div>
-        </section>
+        </FadeIn>
 
-        <section>
+        <FadeIn>
           <h2 className="text-2xl font-bold text-green-900 mb-4">Dagsrytme</h2>
           <div className="divide-y divide-green-100 border border-green-100 rounded-2xl overflow-hidden">
             {dagsrytme.map(([tid, tekst]) => (
@@ -84,9 +85,9 @@ export default function Opstaldning() {
               </div>
             ))}
           </div>
-        </section>
+        </FadeIn>
 
-        <section>
+        <FadeIn>
           <h2 className="text-2xl font-bold text-green-900 mb-4">Åbningstider</h2>
           <div className="grid sm:grid-cols-2 gap-4">
             <div className="bg-green-50/70 rounded-2xl p-6">
@@ -98,15 +99,15 @@ export default function Opstaldning() {
               <p className="text-green-900 font-semibold mt-1">07:00 – 20:00</p>
             </div>
           </div>
-        </section>
+        </FadeIn>
 
-        <section className="bg-green-900 text-white rounded-2xl px-8 py-12 text-center">
+        <FadeIn className="bg-green-900 text-white rounded-2xl px-8 py-12 text-center">
           <h2 className="text-2xl font-bold mb-4">Interesseret i en plads?</h2>
           <p className="text-white/80 mb-6">Hør om ledige bokse og kom forbi til en rundvisning.</p>
           <Link href="/kontakt" className="inline-block bg-white text-green-900 font-semibold px-8 py-3.5 rounded-full hover:bg-green-50 transition-colors">
             Kontakt os
           </Link>
-        </section>
+        </FadeIn>
       </div>
 
       <SiteFooter />

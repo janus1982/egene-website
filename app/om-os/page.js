@@ -1,6 +1,7 @@
 import SiteNav from "../components/SiteNav";
 import SiteFooter from "../components/SiteFooter";
 import PageHero from "../components/PageHero";
+import FadeIn from "../components/FadeIn";
 
 export const metadata = { title: "Om os" };
 
@@ -36,7 +37,7 @@ export default function OmOs() {
       />
 
       <div className="max-w-3xl mx-auto px-6 py-20 space-y-16">
-        <section>
+        <FadeIn>
           <h2 className="text-2xl font-bold text-green-900 mb-4">Velkommen til Egene</h2>
           <p className="text-gray-600 leading-relaxed">
             Egene er Nordsjællands smukkest beliggende ridecenter, omgivet af Rudeskov i
@@ -45,9 +46,9 @@ export default function OmOs() {
             oktober 2011 drevet Egene Ridecenter og rideskole, samt konkurrencestald med
             uddannelse af ryttere og heste på alle niveauer.
           </p>
-        </section>
+        </FadeIn>
 
-        <section>
+        <FadeIn>
           <h2 className="text-2xl font-bold text-green-900 mb-4">Vores vision</h2>
           <p className="text-gray-600 leading-relaxed">
             Egene er et ridecenter præget af høj etik og moral, med fokus på hestevelfærd
@@ -64,9 +65,9 @@ export default function OmOs() {
               — Martine og Sigurd, april 2015
             </footer>
           </blockquote>
-        </section>
+        </FadeIn>
 
-        <section>
+        <FadeIn>
           <h2 className="text-2xl font-bold text-green-900 mb-6">Bestyrelsen</h2>
           <div className="grid sm:grid-cols-2 gap-4">
             {bestyrelse.map((b) => (
@@ -80,9 +81,9 @@ export default function OmOs() {
             Kontakt bestyrelsen:{" "}
             <a href="mailto:bestyrelsen@egene.dk" className="text-green-700 underline">bestyrelsen@egene.dk</a>
           </p>
-        </section>
+        </FadeIn>
 
-        <section>
+        <FadeIn>
           <h2 className="text-2xl font-bold text-green-900 mb-4">Stævneudvalg</h2>
           <p className="text-gray-600 leading-relaxed">
             Helle Sylvest, Louise Kirkegaard, Pernille Breum-Harild, Heike Schauerte,
@@ -92,9 +93,9 @@ export default function OmOs() {
             Kontakt:{" "}
             <a href="mailto:staevne@egene-ridecenter.dk" className="text-green-700 underline">staevne@egene-ridecenter.dk</a>
           </p>
-        </section>
+        </FadeIn>
 
-        <section>
+        <FadeIn>
           <h2 className="text-2xl font-bold text-green-900 mb-6">Samarbejdspartnere</h2>
           <div className="grid sm:grid-cols-2 gap-4">
             {partnere.map((p) => (
@@ -104,7 +105,7 @@ export default function OmOs() {
               </div>
             ))}
           </div>
-        </section>
+        </FadeIn>
       </div>
 
       <SiteFooter />

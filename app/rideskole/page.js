@@ -2,6 +2,7 @@ import Link from "next/link";
 import SiteNav from "../components/SiteNav";
 import SiteFooter from "../components/SiteFooter";
 import PageHero from "../components/PageHero";
+import FadeIn from "../components/FadeIn";
 
 export const metadata = { title: "Rideskole" };
 
@@ -94,7 +95,7 @@ export default function Rideskole() {
       />
 
       <div className="max-w-3xl mx-auto px-6 py-20 space-y-16">
-        <section>
+        <FadeIn>
           <h2 className="text-2xl font-bold text-green-900 mb-4">Velkommen i rideskolen</h2>
           <p className="text-gray-600 leading-relaxed">
             Rideskolen tilbyder undervisning til nybegyndere, let-øvede og rutinerede
@@ -102,9 +103,9 @@ export default function Rideskole() {
             opsadlingskurser samt ryttermærker. Egene Rideskole er certificeret af Dansk
             Rideforbund.
           </p>
-        </section>
+        </FadeIn>
 
-        <section className="bg-green-50/70 rounded-2xl p-6">
+        <FadeIn className="bg-green-50/70 rounded-2xl p-6">
           <h2 className="text-2xl font-bold text-green-900 mb-3">Prøvetime</h2>
           <p className="text-gray-600 leading-relaxed">
             Overvejer du at starte til ridning på Egene? Vi tilbyder en prøvetime til
@@ -113,9 +114,9 @@ export default function Rideskole() {
             for at aftale tid. Mødetid er mindst 20 minutter før ridetimen, da alle
             ryttere selv sadler op.
           </p>
-        </section>
+        </FadeIn>
 
-        <section>
+        <FadeIn>
           <h2 className="text-2xl font-bold text-green-900 mb-4">Priser</h2>
           <p className="text-sm text-gray-500 mb-4">Gældende fra 1. august 2025</p>
           <div className="divide-y divide-green-100 border border-green-100 rounded-2xl overflow-hidden">
@@ -130,9 +131,9 @@ export default function Rideskole() {
             Betaling trækkes automatisk via Dankort den 3.–4. i måneden. Juli er lukket og
             uden betaling.
           </p>
-        </section>
+        </FadeIn>
 
-        <section>
+        <FadeIn>
           <h2 className="text-2xl font-bold text-green-900 mb-4">Holdoversigt</h2>
           <div className="grid sm:grid-cols-2 gap-5">
             {Object.entries(holdoversigt).map(([dag, hold]) => (
@@ -149,9 +150,9 @@ export default function Rideskole() {
               </div>
             ))}
           </div>
-        </section>
+        </FadeIn>
 
-        <section>
+        <FadeIn>
           <h2 className="text-2xl font-bold text-green-900 mb-4">Ind- og udmelding</h2>
           <p className="text-gray-600 leading-relaxed">
             Indmelding sker online via{" "}
@@ -160,9 +161,9 @@ export default function Rideskole() {
             <a href="mailto:kasserer@egene.dk" className="text-green-700 underline">kasserer@egene.dk</a>{" "}
             med 30 dages varsel fra den 1. i måneden.
           </p>
-        </section>
+        </FadeIn>
 
-        <section>
+        <FadeIn>
           <h2 className="text-2xl font-bold text-green-900 mb-6">Underviserne</h2>
           <div className="space-y-4">
             {undervisere.map((u) => (
@@ -173,9 +174,9 @@ export default function Rideskole() {
               </div>
             ))}
           </div>
-        </section>
+        </FadeIn>
 
-        <section>
+        <FadeIn>
           <h2 className="text-2xl font-bold text-green-900 mb-4">Ponyer og heste</h2>
           <p className="text-gray-600 leading-relaxed mb-4">
             Rideskolens ponyer og heste er klubbens hjerte. De er udvalgt med omhu og
@@ -187,18 +188,18 @@ export default function Rideskole() {
             ))}
           </div>
           <p className="text-sm text-green-700 mt-3 italic">[Billeder af ponyerne uploades manuelt senere]</p>
-        </section>
+        </FadeIn>
 
-        <section>
+        <FadeIn>
           <h2 className="text-2xl font-bold text-green-900 mb-4">Hjælper & part</h2>
           <p className="text-gray-600 leading-relaxed">
             Krav: mindst 12 år og bestået Ryttermærke 1 og 2. Mødetid kl. 9:00 lørdag.
             Som belønning får man 1 times ridning på de heste, der går mindst. Kontakt
             Martine for hjælperlisten.
           </p>
-        </section>
+        </FadeIn>
 
-        <section>
+        <FadeIn>
           <h2 className="text-2xl font-bold text-green-900 mb-4">Ferieplan 2026</h2>
           <div className="divide-y divide-green-100 border border-green-100 rounded-2xl overflow-hidden">
             {ferieplan.map(([navn, dato]) => (
@@ -208,9 +209,9 @@ export default function Rideskole() {
               </div>
             ))}
           </div>
-        </section>
+        </FadeIn>
 
-        <section className="bg-green-900 text-white rounded-2xl px-8 py-10">
+        <FadeIn className="bg-green-900 text-white rounded-2xl px-8 py-10">
           <h2 className="text-2xl font-bold mb-4">Sommerridelejr 2026</h2>
           <p className="text-white/80 mb-4">Uge 27, 28 og 29</p>
           <div className="space-y-4 text-white/90">
@@ -226,7 +227,7 @@ export default function Rideskole() {
           <Link href="/kontakt" className="inline-block mt-6 bg-white text-green-900 font-semibold px-6 py-3 rounded-full hover:bg-green-50 transition-colors">
             Tilmeld eller hør mere
           </Link>
-        </section>
+        </FadeIn>
       </div>
 
       <SiteFooter />

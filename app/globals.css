@@ -16,22 +16,41 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-/* Blød indtoning der får sektioner til at glide elegant ind */
-@keyframes fade-up {
-  from {
-    opacity: 0;
-    transform: translateY(24px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* Blød scroll til interne ankre (#tilbud osv.) */
+html {
+  scroll-behavior: smooth;
 }
 
+/* Blød indtoning (bruges som fallback) */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 .fade-up {
   animation: fade-up 0.9s ease-out both;
 }
 
-html {
-  scroll-behavior: smooth;
+/* Logo i navigationen — skifter mellem hvid (over hero) og original grøn (over lys header) */
+.logo-lys {
+  filter: brightness(0) invert(1);
+  transition: filter 0.3s ease;
+}
+.logo-moerk {
+  filter: none;
+  transition: filter 0.3s ease;
+}
+
+/* Tilgængelighed: respektér brugere der har slået bevægelse fra */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
