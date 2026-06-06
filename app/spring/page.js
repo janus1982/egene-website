@@ -4,6 +4,8 @@ import SiteNav from "../components/SiteNav";
 import SiteFooter from "../components/SiteFooter";
 import PageHero from "../components/PageHero";
 
+export const metadata = { title: "Spring & stævner" };
+
 export default function Spring() {
   return (
     <main className="text-[#1a1a1a]">
@@ -50,7 +52,7 @@ export default function Spring() {
 
         {/* Billede-indslag */}
         <section className="relative h-72 rounded-2xl overflow-hidden">
-          <Image src="/ryttere.jpg" alt="Ryttere går banen før spring" fill className="object-cover" />
+          <Image src="/ryttere.jpg" alt="Ryttere går banen før spring" fill sizes="(min-width: 768px) 768px, 100vw" className="object-cover" />
         </section>
 
         <section>

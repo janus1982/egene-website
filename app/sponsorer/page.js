@@ -3,6 +3,8 @@ import SiteNav from "../components/SiteNav";
 import SiteFooter from "../components/SiteFooter";
 import PageHero from "../components/PageHero";
 
+export const metadata = { title: "Sponsorer" };
+
 export default function Sponsorer() {
   return (
     <main className="text-[#1a1a1a]">

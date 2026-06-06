@@ -10,11 +10,11 @@ export default function Home() {
 
       {/* ---------- Hero ---------- */}
       <section className="relative min-h-screen flex items-center justify-center text-center">
-        <Image src="/forside.png" alt="Egene Rideklub på en sommerdag" fill priority className="object-cover" />
+        <Image src="/forside.jpg" alt="Egene Rideklub på en sommerdag" fill priority sizes="100vw" className="object-cover" />
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/60" />
 
         <div className="relative z-10 px-6 max-w-3xl fade-up">
-          <p className="text-green-100 uppercase tracking-[0.3em] text-sm mb-4">Nordsjælland</p>
+          <p className="text-green-100 uppercase tracking-[0.3em] text-sm mb-4">Nordsjælland · Holte</p>
           <h1 className="text-white text-4xl sm:text-6xl font-bold leading-tight mb-6 drop-shadow-lg">
             En rideklub i særklasse
           </h1>
@@ -37,9 +37,11 @@ export default function Home() {
       <section className="max-w-3xl mx-auto px-6 py-24 text-center">
         <h2 className="text-3xl sm:text-4xl font-bold text-green-900 mb-6">Velkommen til Egene</h2>
         <p className="text-gray-600 text-lg leading-relaxed">
-          Vi er en mindre klub med store ambitioner. Hos os er der plads til både
-          den seriøse springrytter og den der bare elsker heste og naturen.
-          Beliggenheden under de gamle egetræer gør Egene til noget helt for sig selv.
+          Egene er Nordsjællands smukkest beliggende ridecenter, omgivet af Rudeskov i
+          Gl. Holte ved foden af Høje Sandbjerg. Vi har privat opstaldning af cirka 45
+          heste og ponyer samt rideskole. Martine Sandberg og Sigurd Nielsen har siden
+          oktober 2011 drevet Egene Ridecenter og rideskole, samt konkurrencestald med
+          uddannelse af ryttere og heste på alle niveauer.
         </p>
       </section>
 
@@ -67,7 +69,7 @@ export default function Home() {
       {/* ---------- Spring-showcase ---------- */}
       <section className="grid md:grid-cols-2 items-stretch">
         <div className="relative min-h-[400px]">
-          <Image src="/springbane.jpg" alt="Springbanen på Egene" fill className="object-cover" />
+          <Image src="/springbane.jpg" alt="Springbanen på Egene" fill sizes="(min-width: 768px) 50vw, 100vw" className="object-cover" />
         </div>
         <div className="bg-green-900 text-white flex items-center px-8 py-16 md:px-16">
           <div>

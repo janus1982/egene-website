@@ -8,10 +8,10 @@ export default function SiteFooter() {
         {/* Logo + navn */}
         <div className="flex flex-col items-center md:items-start">
           <span className="bg-white rounded-xl p-2.5 mb-4">
-            <Image src="/logo.jpg" alt="Egene Rideklub" width={80} height={80} className="object-contain" />
+            <Image src="/logo.png" alt="Egene Rideklub" width={80} height={80} className="object-contain" />
           </span>
           <p className="text-green-300/70 text-sm text-center md:text-left">
-            Et af Nordsjællands smukkest beliggende ridecentre.
+            Et af Nordsjællands smukkest beliggende ridecentre — i Holte.
           </p>
         </div>
 
@@ -29,14 +29,23 @@ export default function SiteFooter() {
         {/* Kontakt */}
         <div className="text-center md:text-left">
           <p className="font-semibold mb-3 text-white">Find os</p>
-          <p className="text-sm text-green-200">Nordsjælland</p>
-          <p className="text-sm text-green-200">kontakt@egene.dk</p>
-          <p className="text-sm text-green-200 mt-2">Facebook · Instagram</p>
+          <p className="text-sm text-green-200">Egene Ridecenter v/Sigurd Nielsen</p>
+          <p className="text-sm text-green-200">Høje Sandbjergvej 4, 2840 Holte</p>
+          <p className="text-sm text-green-200 mt-1">
+            <a href="tel:+4527140133" className="hover:text-white">+45 27 14 01 33</a>
+          </p>
+          <p className="text-sm text-green-200">
+            <a href="mailto:kontakt@egene.dk" className="hover:text-white">kontakt@egene.dk</a>
+          </p>
+          <p className="text-sm text-green-200 mt-3 flex gap-3 justify-center md:justify-start">
+            <a href="https://www.facebook.com/pages/Ridecentret-Egene/141125835941239" target="_blank" rel="noopener noreferrer" className="hover:text-white underline">Facebook</a>
+            <a href="https://www.instagram.com/egeneridecenter_/" target="_blank" rel="noopener noreferrer" className="hover:text-white underline">Instagram</a>
+          </p>
         </div>
       </div>
 
       <p className="text-green-300/40 text-xs text-center mt-10">
-        © {new Date().getFullYear()} Egene Rideklub · Medlem af Dansk Rideforbund
+        © {new Date().getFullYear()} Egene Rideklub · CHR 128903 · Medlem af Dansk Rideforbund
       </p>
     </footer>
   );

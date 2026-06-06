@@ -17,27 +17,33 @@ export default function SiteNav({ variant = "solid" }) {
   const [open, setOpen] = useState(false);
   const transparent = variant === "transparent";
 
+  const linkColor = transparent
+    ? "text-white hover:text-green-200 drop-shadow"
+    : "text-green-900 hover:text-green-600";
+
   return (
     <>
       <nav
         className={
-          (transparent
-            ? "absolute bg-transparent"
-            : "sticky bg-green-900 shadow-md") +
+          (transparent ? "absolute bg-transparent" : "sticky bg-white shadow-md") +
           " top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 md:px-10"
         }
       >
         <Link href="/" className="flex items-center">
-          <span className="bg-white/95 rounded-xl p-1.5 shadow-sm">
-            <Image src="/logo.jpg" alt="Egene Rideklub" width={52} height={52} className="object-contain" />
-          </span>
+          <Image
+            src="/logo.png"
+            alt="Egene Rideklub"
+            width={56}
+            height={56}
+            className={"object-contain" + (transparent ? " drop-shadow-lg" : "")}
+          />
         </Link>
 
         {/* Menu — computer */}
-        <ul className="hidden md:flex gap-6 text-sm font-medium text-white">
+        <ul className="hidden md:flex gap-6 text-sm font-medium">
           {links.map((l) => (
             <li key={l.href}>
-              <Link href={l.href} className="hover:text-green-200 transition-colors drop-shadow">
+              <Link href={l.href} className={"transition-colors " + linkColor}>
                 {l.label}
               </Link>
             </li>
@@ -47,7 +53,7 @@ export default function SiteNav({ variant = "solid" }) {
         {/* Hamburger — mobil */}
         <button
           onClick={() => setOpen(!open)}
-          className="md:hidden text-white text-3xl leading-none drop-shadow"
+          className={"md:hidden text-3xl leading-none " + (transparent ? "text-white drop-shadow" : "text-green-900")}
           aria-label="Menu"
         >
           {open ? "✕" : "☰"}
