@@ -9,13 +9,21 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@sanity/icons": "^3.7.4",
+    "@sanity/image-url": "^2.1.1",
+    "@sanity/vision": "^5.30.0",
     "next": "16.2.7",
+    "next-sanity": "^12.4.5",
     "react": "19.2.4",
     "react-dom": "19.2.4",
-    "sharp": "^0.34.5"
+    "sanity": "^5.30.0",
+    "sharp": "^0.34.5",
+    "styled-components": "^6.4.2"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
+    "@types/node": "25.9.2",
+    "@types/react": "19.2.17",
     "eslint": "^9",
     "eslint-config-next": "16.2.7",
     "tailwindcss": "^4"

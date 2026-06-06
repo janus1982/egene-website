@@ -1,10 +1,15 @@
+import Image from "next/image";
 import Link from "next/link";
 import SiteNav from "../components/SiteNav";
 import SiteFooter from "../components/SiteFooter";
 import PageHero from "../components/PageHero";
 import FadeIn from "../components/FadeIn";
+import { getUndervisere, getPonyer, getHold } from "../../sanity/lib/queries";
+import { urlFor } from "../../sanity/lib/image";
 
 export const metadata = { title: "Rideskole" };
+
+const UGEDAGE = ["Mandag", "Tirsdag", "Onsdag", "Torsdag", "Fredag", "Lørdag", "Søndag"];
 
 const priser = [
   ["Prøvetime", "200 kr. (MobilePay)"],
@@ -17,59 +22,27 @@ const priser = [
   ["Medlemskontingent", "600 kr./år (300 kr. efter sommerferien)"],
 ];
 
-const holdoversigt = {
-  Mandag: [
-    ["15:00", "Cavalettis og bom"],
-    ["15:45", "Let øvede"],
-    ["16:30", "Øvede"],
-    ["17:15", "Begynder/let øvede"],
-  ],
-  Tirsdag: [
-    ["15:15", "Spring begynder"],
-    ["16:00", "Spring øvede"],
-  ],
-  Onsdag: [
-    ["15:00", "Begynder"],
-    ["15:45", "Let øvede"],
-    ["16:30", "Øvede"],
-    ["17:15", "Let øvede"],
-  ],
-  Torsdag: [
-    ["15:00", "Begynder"],
-    ["15:45", "Cavalettis og bom"],
-    ["16:30", "Øvede"],
-    ["17:15", "Dressur"],
-  ],
-  Fredag: [
-    ["15:00", "Begynder/let øvede"],
-    ["15:45", "Let øvede"],
-    ["16:30", "Øvede"],
-    ["17:15", "Let øvede"],
-  ],
-  Lørdag: [
-    ["10:00", "Let øvede"],
-    ["10:45", "Trækhold/begynder"],
-    ["11:30", "Trækhold/begynder"],
-    ["12:15", "Trækhold/begynder"],
-    ["12:45", "Let øvede"],
-  ],
-  Søndag: [
-    ["10:00", "Parthold"],
-    ["11:00", "Trækhold/begynder"],
-    ["11:45", "Trækhold/begynder"],
-  ],
+// Statisk holdoversigt (bruges indtil hold oprettes i CMS)
+const holdoversigtStatisk = {
+  Mandag: [["15:00", "Cavalettis og bom"], ["15:45", "Let øvede"], ["16:30", "Øvede"], ["17:15", "Begynder/let øvede"]],
+  Tirsdag: [["15:15", "Spring begynder"], ["16:00", "Spring øvede"]],
+  Onsdag: [["15:00", "Begynder"], ["15:45", "Let øvede"], ["16:30", "Øvede"], ["17:15", "Let øvede"]],
+  Torsdag: [["15:00", "Begynder"], ["15:45", "Cavalettis og bom"], ["16:30", "Øvede"], ["17:15", "Dressur"]],
+  Fredag: [["15:00", "Begynder/let øvede"], ["15:45", "Let øvede"], ["16:30", "Øvede"], ["17:15", "Let øvede"]],
+  Lørdag: [["10:00", "Let øvede"], ["10:45", "Trækhold/begynder"], ["11:30", "Trækhold/begynder"], ["12:15", "Trækhold/begynder"], ["12:45", "Let øvede"]],
+  Søndag: [["10:00", "Parthold"], ["11:00", "Trækhold/begynder"], ["11:45", "Trækhold/begynder"]],
 };
 
-const undervisere = [
-  { navn: "Martine Sandberg", tekst: "Tidligere international springrytter, bachelor i hestens anatomi. Underviser tirsdag og torsdag.", kontakt: "rideskolen@egene.dk · 2288 0707" },
-  { navn: "Fiona Rosholm", tekst: "Har redet på Egene siden hun var lille. Underviser søndag." },
-  { navn: "Katrine Bornholdt Lange", tekst: "19 år, har selv lært at ride på Egene. Underviser mandage." },
-  { navn: "Karina Binau Larsen", tekst: "Mange års undervisningserfaring, uddannet pædagog. Underviser onsdag.", kontakt: "karina@egene.dk" },
-  { navn: "Louise Refsgaard", tekst: "Underviser lørdag." },
-  { navn: "Laura Langaard Lauridsen", tekst: "Aktiv springrytter. Underviser mandage og tirsdag på Birkerød Rideskole." },
+const undervisereStatisk = [
+  { navn: "Martine Sandberg", beskrivelse: "Tidligere international springrytter, bachelor i hestens anatomi. Underviser tirsdag og torsdag.", email: "rideskolen@egene.dk", telefon: "2288 0707" },
+  { navn: "Fiona Rosholm", beskrivelse: "Har redet på Egene siden hun var lille. Underviser søndag." },
+  { navn: "Katrine Bornholdt Lange", beskrivelse: "19 år, har selv lært at ride på Egene. Underviser mandage." },
+  { navn: "Karina Binau Larsen", beskrivelse: "Mange års undervisningserfaring, uddannet pædagog. Underviser onsdag.", email: "karina@egene.dk" },
+  { navn: "Louise Refsgaard", beskrivelse: "Underviser lørdag." },
+  { navn: "Laura Langaard Lauridsen", beskrivelse: "Aktiv springrytter. Underviser mandage og tirsdag på Birkerød Rideskole." },
 ];
 
-const ponyer = ["Merlin", "La Rosette", "Dixie", "Malthe", "Frederik", "Kenaghe", "Aisha", "Sunny", "Gigger", "Filur", "Gaston", "Cha-Cha", "Barones", "Shaggy"];
+const ponyerStatisk = ["Merlin", "La Rosette", "Dixie", "Malthe", "Frederik", "Kenaghe", "Aisha", "Sunny", "Gigger", "Filur", "Gaston", "Cha-Cha", "Barones", "Shaggy"];
 
 const ferieplan = [
   ["Påskeferie", "30. marts – 6. april"],
@@ -83,7 +56,28 @@ const ferieplan = [
   ["Vinterferie", "Uge 7, 2027"],
 ];
 
-export default function Rideskole() {
+export default async function Rideskole() {
+  // Hent data fra CMS (tomme arrays hvis intet er oprettet endnu)
+  const [undervisereCMS, ponyerCMS, holdCMS] = await Promise.all([
+    getUndervisere(),
+    getPonyer(),
+    getHold(),
+  ]);
+
+  // Byg holdoversigt grupperet efter ugedag, hvis der er hold i CMS
+  let holdoversigt = holdoversigtStatisk;
+  if (holdCMS && holdCMS.length > 0) {
+    holdoversigt = {};
+    for (const dag of UGEDAGE) {
+      const dagensHold = holdCMS
+        .filter((h) => h.ugedag === dag)
+        .map((h) => [h.tidspunkt, h.varighed ? `${h.holdtype} (${h.varighed})` : h.holdtype]);
+      if (dagensHold.length > 0) holdoversigt[dag] = dagensHold;
+    }
+  }
+
+  const undervisere = undervisereCMS && undervisereCMS.length > 0 ? undervisereCMS : undervisereStatisk;
+
   return (
     <main className="text-[#1a1a1a]">
       <SiteNav />
@@ -140,8 +134,8 @@ export default function Rideskole() {
               <div key={dag} className="border border-green-100 rounded-2xl p-5">
                 <h3 className="font-bold text-green-900 mb-3">{dag}</h3>
                 <ul className="space-y-1.5">
-                  {hold.map(([tid, navn]) => (
-                    <li key={tid + navn} className="flex justify-between text-sm">
+                  {hold.map(([tid, navn], i) => (
+                    <li key={tid + navn + i} className="flex justify-between text-sm">
                       <span className="text-green-700 font-medium">{tid}</span>
                       <span className="text-gray-600 text-right">{navn}</span>
                     </li>
@@ -167,10 +161,27 @@ export default function Rideskole() {
           <h2 className="text-2xl font-bold text-green-900 mb-6">Underviserne</h2>
           <div className="space-y-4">
             {undervisere.map((u) => (
-              <div key={u.navn} className="border border-green-100 rounded-2xl p-5">
-                <p className="text-green-900 font-semibold">{u.navn}</p>
-                <p className="text-gray-600 text-sm mt-1 leading-relaxed">{u.tekst}</p>
-                {u.kontakt && <p className="text-green-700 text-sm mt-1">{u.kontakt}</p>}
+              <div key={u._id || u.navn} className="border border-green-100 rounded-2xl p-5 flex gap-4 items-start">
+                {u.billede && (
+                  <Image
+                    src={urlFor(u.billede).width(160).height(160).fit("crop").url()}
+                    alt={u.billede.alt || u.navn}
+                    width={80}
+                    height={80}
+                    className="rounded-full object-cover shrink-0"
+                  />
+                )}
+                <div>
+                  <p className="text-green-900 font-semibold">{u.navn}</p>
+                  {u.titel && <p className="text-green-700 text-sm">{u.titel}</p>}
+                  <p className="text-gray-600 text-sm mt-1 leading-relaxed">{u.beskrivelse}</p>
+                  {u.undervisningsdage && <p className="text-gray-500 text-sm mt-1">Underviser: {u.undervisningsdage}</p>}
+                  {(u.email || u.telefon) && (
+                    <p className="text-green-700 text-sm mt-1">
+                      {[u.email, u.telefon].filter(Boolean).join(" · ")}
+                    </p>
+                  )}
+                </div>
               </div>
             ))}
           </div>
@@ -178,16 +189,38 @@ export default function Rideskole() {
 
         <FadeIn>
           <h2 className="text-2xl font-bold text-green-900 mb-4">Ponyer og heste</h2>
-          <p className="text-gray-600 leading-relaxed mb-4">
+          <p className="text-gray-600 leading-relaxed mb-6">
             Rideskolens ponyer og heste er klubbens hjerte. De er udvalgt med omhu og
             passet kærligt hver dag.
           </p>
-          <div className="flex flex-wrap gap-2">
-            {ponyer.map((p) => (
-              <span key={p} className="bg-green-50 text-green-900 text-sm rounded-full px-4 py-1.5">{p}</span>
-            ))}
-          </div>
-          <p className="text-sm text-green-700 mt-3 italic">[Billeder af ponyerne uploades manuelt senere]</p>
+
+          {ponyerCMS && ponyerCMS.length > 0 ? (
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+              {ponyerCMS.map((p) => (
+                <div key={p._id} className="rounded-2xl overflow-hidden border border-green-100 group">
+                  <div className="relative aspect-square overflow-hidden">
+                    <Image
+                      src={urlFor(p.billede).width(500).height(500).fit("crop").url()}
+                      alt={p.billede?.alt || p.navn}
+                      fill
+                      sizes="(min-width: 640px) 33vw, 50vw"
+                      className="object-cover transition-transform duration-[400ms] ease-out group-hover:scale-105"
+                    />
+                  </div>
+                  <div className="p-3">
+                    <p className="font-semibold text-green-900">{p.navn}</p>
+                    {p.beskrivelse && <p className="text-gray-600 text-sm mt-1">{p.beskrivelse}</p>}
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="flex flex-wrap gap-2">
+              {ponyerStatisk.map((p) => (
+                <span key={p} className="bg-green-50 text-green-900 text-sm rounded-full px-4 py-1.5">{p}</span>
+              ))}
+            </div>
+          )}
         </FadeIn>
 
         <FadeIn>

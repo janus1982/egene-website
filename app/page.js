@@ -4,6 +4,13 @@ import SiteNav from "./components/SiteNav";
 import SiteFooter from "./components/SiteFooter";
 import Hero from "./components/Hero";
 import FadeIn from "./components/FadeIn";
+import { getNyheder } from "../sanity/lib/queries";
+import { urlFor } from "../sanity/lib/image";
+
+function datoDansk(dato) {
+  if (!dato) return "";
+  return new Date(dato).toLocaleDateString("da-DK", { day: "numeric", month: "long", year: "numeric" });
+}
 
 const tilbud = [
   { titel: "Rideskole", tekst: "Undervisning for alle niveauer — fra de første skridt til konkurrencebanen.", href: "/rideskole" },
@@ -11,7 +18,9 @@ const tilbud = [
   { titel: "Spring & stævner", tekst: "Vores hjerteblod. Træning, stævner og et stærkt springmiljø året rundt.", href: "/spring" },
 ];
 
-export default function Home() {
+export default async function Home() {
+  const nyheder = await getNyheder(3);
+
   return (
     <main className="text-[#1a1a1a]">
       <SiteNav />
@@ -76,6 +85,39 @@ export default function Home() {
           </div>
         </section>
       </FadeIn>
+
+      {/* ---------- Seneste nyheder ---------- */}
+      {nyheder && nyheder.length > 0 && (
+        <section className="max-w-6xl mx-auto px-6 py-24">
+          <FadeIn>
+            <div className="flex items-end justify-between mb-10">
+              <h2 className="text-3xl sm:text-4xl font-bold text-green-900">Seneste nyt</h2>
+              <Link href="/nyheder" className="text-green-700 font-medium hover:text-green-900">Se alle →</Link>
+            </div>
+          </FadeIn>
+          <div className="grid gap-8 md:grid-cols-3">
+            {nyheder.map((n, i) => (
+              <FadeIn key={n._id} delay={i * 0.1}>
+                <Link href="/nyheder" className="block group">
+                  {n.billede && (
+                    <div className="relative h-52 rounded-2xl overflow-hidden mb-4">
+                      <Image
+                        src={urlFor(n.billede).width(600).height(400).fit("crop").url()}
+                        alt={n.billede.alt || n.titel}
+                        fill
+                        sizes="(min-width: 768px) 33vw, 100vw"
+                        className="object-cover transition-transform duration-[400ms] ease-out group-hover:scale-105"
+                      />
+                    </div>
+                  )}
+                  <p className="text-sm text-green-700 mb-1">{datoDansk(n.dato)}</p>
+                  <h3 className="text-lg font-bold text-green-900">{n.titel}</h3>
+                </Link>
+              </FadeIn>
+            ))}
+          </div>
+        </section>
+      )}
 
       <SiteFooter />
     </main>
