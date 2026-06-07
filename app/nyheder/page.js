@@ -6,7 +6,10 @@ import FadeIn from "../components/FadeIn";
 import { getNyheder } from "../../sanity/lib/queries";
 import { urlFor } from "../../sanity/lib/image";
 
-export const metadata = { title: "Nyheder" };
+export const metadata = {
+  title: "Nyheder",
+  description: "Nyheder fra Egene Rideklub i Holte — det sker i rideskolen, springmiljøet og klubben.",
+};
 
 // Simpel oversættelse af rich text-blokke til afsnit
 function tilAfsnit(blokke) {

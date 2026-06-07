@@ -5,7 +5,10 @@ import SiteFooter from "../components/SiteFooter";
 import PageHero from "../components/PageHero";
 import FadeIn from "../components/FadeIn";
 
-export const metadata = { title: "Spring & stævner" };
+export const metadata = {
+  title: "Spring & stævner",
+  description: "Egene er en springstald i Holte med et stærkt springmiljø — træning, stævner og kåringer året rundt.",
+};
 
 export default function Spring() {
   return (

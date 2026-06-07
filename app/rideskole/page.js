@@ -7,7 +7,10 @@ import FadeIn from "../components/FadeIn";
 import { getUndervisere, getPonyer, getHold } from "../../sanity/lib/queries";
 import { urlFor } from "../../sanity/lib/image";
 
-export const metadata = { title: "Rideskole" };
+export const metadata = {
+  title: "Rideskole",
+  description: "Rideskole på Egene i Holte — undervisning i dressur og springning for alle niveauer, hold, priser og undervisere.",
+};
 
 const UGEDAGE = ["Mandag", "Tirsdag", "Onsdag", "Torsdag", "Fredag", "Lørdag", "Søndag"];
 

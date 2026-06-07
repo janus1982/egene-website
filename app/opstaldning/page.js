@@ -4,7 +4,10 @@ import SiteFooter from "../components/SiteFooter";
 import PageHero from "../components/PageHero";
 import FadeIn from "../components/FadeIn";
 
-export const metadata = { title: "Opstaldning" };
+export const metadata = {
+  title: "Opstaldning",
+  description: "Opstaldning på Egene Ridecenter i Holte — fuldpas alle ugens dage, moderne faciliteter og naturskønne omgivelser.",
+};
 
 const tillaeg = [
   ["Alenefold", "750 kr./md."],
@@ -98,6 +101,22 @@ export default function Opstaldning() {
               <p className="text-green-700 font-medium">Weekend & helligdage</p>
               <p className="text-green-900 font-semibold mt-1">07:00 – 20:00</p>
             </div>
+          </div>
+        </FadeIn>
+
+        <FadeIn>
+          <h2 className="text-2xl font-bold text-green-900 mb-4">Praktisk information</h2>
+          <div className="grid grid-cols-2 gap-4">
+            {[
+              { href: "/sikkerhed", label: "Sikkerhed" },
+              { href: "/regler", label: "Regler" },
+              { href: "/beredskab", label: "Beredskab" },
+              { href: "/championat", label: "Championat" },
+            ].map((l) => (
+              <Link key={l.href} href={l.href} className="border border-green-100 rounded-2xl px-5 py-4 font-medium text-green-900 hover:bg-green-50 transition-colors">
+                {l.label} →
+              </Link>
+            ))}
           </div>
         </FadeIn>
 

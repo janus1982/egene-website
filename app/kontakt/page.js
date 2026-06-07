@@ -3,7 +3,10 @@ import SiteFooter from "../components/SiteFooter";
 import PageHero from "../components/PageHero";
 import FadeIn from "../components/FadeIn";
 
-export const metadata = { title: "Kontakt" };
+export const metadata = {
+  title: "Kontakt",
+  description: "Kontakt Egene Rideklub — Høje Sandbjergvej 4, 2840 Holte. Telefon +45 27 14 01 33, kontakt@egene.dk.",
+};
 
 const emails = [
   ["Generelt", "kontakt@egene.dk"],

@@ -5,10 +5,12 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "postbuild": "next-sitemap",
     "start": "next start",
     "lint": "eslint"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.102.0",
     "@sanity/icons": "^3.7.4",
     "@sanity/image-url": "^2.1.1",
     "@sanity/vision": "^5.30.0",

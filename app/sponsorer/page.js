@@ -4,7 +4,10 @@ import SiteFooter from "../components/SiteFooter";
 import PageHero from "../components/PageHero";
 import FadeIn from "../components/FadeIn";
 
-export const metadata = { title: "Sponsorer" };
+export const metadata = {
+  title: "Sponsorer",
+  description: "Bliv sponsor for Egene Rideklub i Holte — støt et stærkt lokalt fællesskab og børn og unges ridning.",
+};
 
 export default function Sponsorer() {
   return (

@@ -3,7 +3,10 @@ import SiteFooter from "../components/SiteFooter";
 import PageHero from "../components/PageHero";
 import FadeIn from "../components/FadeIn";
 
-export const metadata = { title: "Om os" };
+export const metadata = {
+  title: "Om os",
+  description: "Om Egene Rideklub i Holte — historien, visionen, bestyrelsen og menneskene bag et ridecenter i særklasse.",
+};
 
 const bestyrelse = [
   { rolle: "Formand", navn: "Janus Fabricius Kierkegaard" },
