@@ -11,7 +11,7 @@ export default function SiteFooter() {
             <Image src="/logo.png" alt="Egene Rideklub" width={80} height={80} className="object-contain" />
           </span>
           <p className="text-green-300/70 text-sm text-center md:text-left">
-            Et af Nordsjællands smukkest beliggende ridecentre — i Holte.
+            Et af Nordsjællands smukkest beliggende ridecentre - i Holte.
           </p>
         </div>
 
@@ -38,8 +38,8 @@ export default function SiteFooter() {
             <a href="mailto:kontakt@egene.dk" className="hover:text-white">kontakt@egene.dk</a>
           </p>
           <p className="text-sm text-green-200 mt-3 flex gap-3 justify-center md:justify-start">
-            <a href="https://www.facebook.com/pages/Ridecentret-Egene/141125835941239" target="_blank" rel="noopener noreferrer" className="hover:text-white underline">Facebook</a>
-            <a href="https://www.instagram.com/egeneridecenter_/" target="_blank" rel="noopener noreferrer" className="hover:text-white underline">Instagram</a>
+            <a href="https://www.facebook.com/groups/88953719351" target="_blank" rel="noopener noreferrer" className="hover:text-white underline">Facebook</a>
+            <a href="https://www.instagram.com/teamegene/" target="_blank" rel="noopener noreferrer" className="hover:text-white underline">Instagram</a>
           </p>
         </div>
       </div>

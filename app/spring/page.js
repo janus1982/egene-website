@@ -7,7 +7,7 @@ import FadeIn from "../components/FadeIn";
 
 export const metadata = {
   title: "Spring & stævner",
-  description: "Egene er en springstald i Holte med et stærkt springmiljø — træning, stævner og kåringer året rundt.",
+  description: "Egene er en springstald i Holte med et stærkt springmiljø - træning, stævner og kåringer året rundt.",
 };
 
 export default function Spring() {
@@ -18,7 +18,7 @@ export default function Spring() {
         image="/springbane.jpg"
         alt="Springbanen på Egene"
         title="Spring & stævner"
-        subtitle="Vores hjerteblod — et stærkt springmiljø året rundt"
+        subtitle="Vores hjerteblod - et stærkt springmiljø året rundt"
       />
 
       <div className="max-w-3xl mx-auto px-6 py-20 space-y-16">
@@ -36,7 +36,7 @@ export default function Spring() {
           <h2 className="text-2xl font-bold text-green-900 mb-4">Stævner</h2>
           <p className="text-gray-600 leading-relaxed">
             Vi afholder og deltager i stævner gennem hele året. Det er dage fyldt med
-            spænding, fællesskab og gode præstationer — for både nye og rutinerede ryttere.
+            spænding, fællesskab og gode præstationer - for både nye og rutinerede ryttere.
           </p>
           <p className="text-sm text-green-700 mt-3 italic">
             [Indsæt kommende stævnedatoer og resultater her]
@@ -46,7 +46,7 @@ export default function Spring() {
         <FadeIn>
           <h2 className="text-2xl font-bold text-green-900 mb-4">Træningscamp</h2>
           <p className="text-gray-600 leading-relaxed">
-            Vores træningscamps giver ekstra fokus og fremgang i koncentrerede forløb —
+            Vores træningscamps giver ekstra fokus og fremgang i koncentrerede forløb -
             ofte med dygtige gæsteundervisere.
           </p>
           <p className="text-sm text-green-700 mt-3 italic">
@@ -62,7 +62,7 @@ export default function Spring() {
         <FadeIn>
           <h2 className="text-2xl font-bold text-green-900 mb-4">Året på Egene</h2>
           <p className="text-gray-600 leading-relaxed">
-            Året byder på faste traditioner — fra kæphestestævner for de mindste til
+            Året byder på faste traditioner - fra kæphestestævner for de mindste til
             klubmesterskaber og hyggelige arrangementer. Der er altid noget at se frem til.
           </p>
           <p className="text-sm text-green-700 mt-3 italic">

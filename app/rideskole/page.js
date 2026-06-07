@@ -9,7 +9,7 @@ import { urlFor } from "../../sanity/lib/image";
 
 export const metadata = {
   title: "Rideskole",
-  description: "Rideskole på Egene i Holte — undervisning i dressur og springning for alle niveauer, hold, priser og undervisere.",
+  description: "Rideskole på Egene i Holte - undervisning i dressur og springning for alle niveauer, hold, priser og undervisere.",
 };
 
 const UGEDAGE = ["Mandag", "Tirsdag", "Onsdag", "Torsdag", "Fredag", "Lørdag", "Søndag"];
@@ -37,12 +37,12 @@ const holdoversigtStatisk = {
 };
 
 const undervisereStatisk = [
-  { navn: "Martine Sandberg", beskrivelse: "Tidligere international springrytter, bachelor i hestens anatomi. Underviser tirsdag og torsdag.", email: "rideskolen@egene.dk", telefon: "2288 0707" },
-  { navn: "Fiona Rosholm", beskrivelse: "Har redet på Egene siden hun var lille. Underviser søndag." },
-  { navn: "Katrine Bornholdt Lange", beskrivelse: "19 år, har selv lært at ride på Egene. Underviser mandage." },
-  { navn: "Karina Binau Larsen", beskrivelse: "Mange års undervisningserfaring, uddannet pædagog. Underviser onsdag.", email: "karina@egene.dk" },
-  { navn: "Louise Refsgaard", beskrivelse: "Underviser lørdag." },
-  { navn: "Laura Langaard Lauridsen", beskrivelse: "Aktiv springrytter. Underviser mandage og tirsdag på Birkerød Rideskole." },
+  { navn: "Martine Sandberg", titel: "Ansvarlig for rideskolen", beskrivelse: "Martine er medejer af Egene og står i spidsen for rideskolen. Hun er tidligere international springrytter og har en bachelor i hestens anatomi. Med stor faglighed og varme brænder hun for den korrekte uddannelse af både hest og rytter.", undervisningsdage: "Tirsdag og torsdag", email: "rideskolen@egene.dk", telefon: "2288 0707" },
+  { navn: "Fiona Rosholm", titel: "Underviser", beskrivelse: "Fiona har redet på Egene, siden hun var lille, og kender stedet ud og ind.", undervisningsdage: "Søndag" },
+  { navn: "Katrine Bornholdt Lange", titel: "Underviser", beskrivelse: "Katrine er 19 år og har selv lært at ride på Egene.", undervisningsdage: "Mandag" },
+  { navn: "Karina Binau Larsen", titel: "Underviser", beskrivelse: "Karina har mange års undervisningserfaring og er uddannet pædagog.", undervisningsdage: "Onsdag", email: "karina@egene.dk" },
+  { navn: "Louise Refsgaard", titel: "Underviser", beskrivelse: "Louise underviser vores lørdagshold.", undervisningsdage: "Lørdag" },
+  { navn: "Laura Langaard Lauridsen", titel: "Underviser", beskrivelse: "Laura er aktiv springrytter og underviser også på Birkerød Rideskole.", undervisningsdage: "Mandag og tirsdag" },
 ];
 
 const ponyerStatisk = ["Merlin", "La Rosette", "Dixie", "Malthe", "Frederik", "Kenaghe", "Aisha", "Sunny", "Gigger", "Filur", "Gaston", "Cha-Cha", "Barones", "Shaggy"];
@@ -79,7 +79,13 @@ export default async function Rideskole() {
     }
   }
 
-  const undervisere = undervisereCMS && undervisereCMS.length > 0 ? undervisereCMS : undervisereStatisk;
+  // Vis CMS-undervisere først, og udfyld med dem fra den indbyggede liste der endnu
+  // ikke er oprettet i CMS — så ingen forsvinder, uanset hvor mange du har lagt ind.
+  const cmsNavne = new Set((undervisereCMS || []).map((u) => u.navn));
+  const undervisere = [
+    ...(undervisereCMS || []),
+    ...undervisereStatisk.filter((u) => !cmsNavne.has(u.navn)),
+  ];
 
   return (
     <main className="text-[#1a1a1a]">
@@ -88,7 +94,7 @@ export default async function Rideskole() {
         image="/ridebanen.jpg"
         alt="Ridebanen på Egene"
         title="Rideskole"
-        subtitle="Undervisning for alle niveauer — i dressur og springning"
+        subtitle="Undervisning for alle niveauer - i dressur og springning"
       />
 
       <div className="max-w-3xl mx-auto px-6 py-20 space-y-16">
@@ -165,7 +171,7 @@ export default async function Rideskole() {
           <div className="space-y-4">
             {undervisere.map((u) => (
               <div key={u._id || u.navn} className="border border-green-100 rounded-2xl p-5 flex gap-4 items-start">
-                {u.billede && (
+                {u.billede ? (
                   <Image
                     src={urlFor(u.billede).width(160).height(160).fit("crop").url()}
                     alt={u.billede.alt || u.navn}
@@ -173,6 +179,10 @@ export default async function Rideskole() {
                     height={80}
                     className="rounded-full object-cover shrink-0"
                   />
+                ) : (
+                  <span className="w-20 h-20 shrink-0 rounded-full bg-green-100 text-green-800 font-semibold flex items-center justify-center text-lg">
+                    {u.navn.split(" ").map((d) => d[0]).slice(0, 2).join("")}
+                  </span>
                 )}
                 <div>
                   <p className="text-green-900 font-semibold">{u.navn}</p>
@@ -252,11 +262,11 @@ export default async function Rideskole() {
           <p className="text-white/80 mb-4">Uge 27, 28 og 29</p>
           <div className="space-y-4 text-white/90">
             <div>
-              <p className="font-semibold">Uge 27 & 28 — med overnatning</p>
+              <p className="font-semibold">Uge 27 & 28 - med overnatning</p>
               <p className="text-white/80 text-sm">Mandag–fredag. Afslutningsshow fredag kl. 14:30. Pris 4.900 kr. (depositum 2.450 kr.)</p>
             </div>
             <div>
-              <p className="font-semibold">Uge 29 — dagridelejr</p>
+              <p className="font-semibold">Uge 29 - dagridelejr</p>
               <p className="text-white/80 text-sm">Mandag–torsdag kl. 9–16. Pris 3.900 kr. (depositum 1.950 kr.)</p>
             </div>
           </div>

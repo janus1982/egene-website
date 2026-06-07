@@ -52,7 +52,7 @@ export default function SiteNav() {
           />
         </Link>
 
-        {/* Menu — computer */}
+        {/* Menu - computer */}
         <ul className="hidden md:flex gap-6 text-sm font-medium">
           {links.map((l) => (
             <li key={l.href}>
@@ -63,7 +63,7 @@ export default function SiteNav() {
           ))}
         </ul>
 
-        {/* Hamburger — mobil */}
+        {/* Hamburger - mobil */}
         <button
           onClick={() => setOpen(!open)}
           className={

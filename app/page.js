@@ -13,7 +13,7 @@ function datoDansk(dato) {
 }
 
 const tilbud = [
-  { titel: "Rideskole", tekst: "Undervisning for alle niveauer — fra de første skridt til konkurrencebanen.", href: "/rideskole" },
+  { titel: "Rideskole", tekst: "Undervisning for alle niveauer - fra de første skridt til konkurrencebanen.", href: "/rideskole" },
   { titel: "Opstaldning", tekst: "Moderne faciliteter og daglig pleje til din hest i naturskønne omgivelser.", href: "/opstaldning" },
   { titel: "Spring & stævner", tekst: "Vores hjerteblod. Træning, stævner og et stærkt springmiljø året rundt.", href: "/spring" },
 ];

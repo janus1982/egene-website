@@ -6,7 +6,7 @@ import FadeIn from "../components/FadeIn";
 
 export const metadata = {
   title: "Sponsorer",
-  description: "Bliv sponsor for Egene Rideklub i Holte — støt et stærkt lokalt fællesskab og børn og unges ridning.",
+  description: "Bliv sponsor for Egene Rideklub i Holte - støt et stærkt lokalt fællesskab og børn og unges ridning.",
 };
 
 export default function Sponsorer() {
@@ -37,7 +37,7 @@ export default function Sponsorer() {
           <h2 className="text-2xl font-bold text-green-900 mb-4">Bliv sponsor</h2>
           <p className="text-gray-600 leading-relaxed">
             Vil din virksomhed støtte en rideklub i særklasse? Som sponsor bliver I en
-            synlig del af et stærkt lokalt fællesskab — og er med til at skabe gode
+            synlig del af et stærkt lokalt fællesskab - og er med til at skabe gode
             oplevelser for børn og unge.
           </p>
         </FadeIn>

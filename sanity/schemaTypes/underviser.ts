@@ -13,7 +13,7 @@ export const underviserType = defineType({
     }),
     defineField({
       name: 'billede',
-      title: 'Billede',
+      title: 'Billede (valgfrit)',
       type: 'image',
       options: {hotspot: true},
       fields: [
@@ -21,10 +21,8 @@ export const underviserType = defineType({
           name: 'alt',
           title: 'Alt-tekst',
           type: 'string',
-          validation: (rule) => rule.required(),
         }),
       ],
-      validation: (rule) => rule.required(),
     }),
     defineField({
       name: 'titel',

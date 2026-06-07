@@ -5,7 +5,7 @@ import FadeIn from "../components/FadeIn";
 
 export const metadata = {
   title: "Sikkerhed",
-  description: "Sikkerhedsregler på Egene Rideklub i Holte — ridehjelm, færdsel i stald og på banen.",
+  description: "Sikkerhedsregler på Egene Rideklub i Holte - ridehjelm, færdsel i stald og på banen.",
 };
 
 export default function Sikkerhed() {
@@ -29,7 +29,7 @@ export default function Sikkerhed() {
         <FadeIn>
           <ul className="space-y-3 text-gray-600 leading-relaxed list-disc pl-5">
             <li>Godkendt ridehjelm er påbudt under al ridning.</li>
-            <li>Sikkerhedsvest anbefales — og er påbudt ved springning for børn.</li>
+            <li>Sikkerhedsvest anbefales - og er påbudt ved springning for børn.</li>
             <li>Korrekt fodtøj med hæl ved ridning og håndtering af heste.</li>
             <li>Vis hensyn og giv besked, når du færdes bag heste.</li>
             <li>Følg altid anvisninger fra undervisere og personale.</li>

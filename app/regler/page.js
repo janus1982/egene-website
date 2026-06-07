@@ -5,7 +5,7 @@ import FadeIn from "../components/FadeIn";
 
 export const metadata = {
   title: "Regler",
-  description: "Ordensregler på Egene Rideklub — så alle har en god og tryg oplevelse i stald og på baner.",
+  description: "Ordensregler på Egene Rideklub - så alle har en god og tryg oplevelse i stald og på baner.",
 };
 
 export default function Regler() {
@@ -28,7 +28,7 @@ export default function Regler() {
         </FadeIn>
         <FadeIn>
           <ul className="space-y-3 text-gray-600 leading-relaxed list-disc pl-5">
-            <li>Ryd op efter dig selv og din hest — i stald, sadelrum og på baner.</li>
+            <li>Ryd op efter dig selv og din hest - i stald, sadelrum og på baner.</li>
             <li>Fej fold- og staldgange, og fjern gødning fra ridebanerne.</li>
             <li>Vis hensyn til andre ryttere og til naboerne omkring centeret.</li>
             <li>Hunde holdes i snor.</li>

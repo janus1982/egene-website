@@ -45,7 +45,7 @@ export default function Hero() {
           En rideklub i særklasse
         </h1>
         <p className="text-white/90 text-lg sm:text-xl mb-10 drop-shadow">
-          Et lille sted med en helt særlig beliggenhed — hjem for springning,
+          Et lille sted med en helt særlig beliggenhed - hjem for springning,
           fællesskab og heste i smukke rammer under de gamle ege.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">

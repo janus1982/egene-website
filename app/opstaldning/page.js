@@ -6,7 +6,7 @@ import FadeIn from "../components/FadeIn";
 
 export const metadata = {
   title: "Opstaldning",
-  description: "Opstaldning på Egene Ridecenter i Holte — fuldpas alle ugens dage, moderne faciliteter og naturskønne omgivelser.",
+  description: "Opstaldning på Egene Ridecenter i Holte - fuldpas alle ugens dage, moderne faciliteter og naturskønne omgivelser.",
 };
 
 const tillaeg = [
@@ -42,7 +42,7 @@ export default function Opstaldning() {
           <h2 className="text-2xl font-bold text-green-900 mb-4">Din hest i gode hænder</h2>
           <p className="text-gray-600 leading-relaxed">
             Der er plads til cirka 45 heste på Egene Ridecenter. Vi tilbyder fuldpas alle
-            ugens 7 dage inkl. helligdage — alt sammen i smukke rammer under de gamle
+            ugens 7 dage inkl. helligdage - alt sammen i smukke rammer under de gamle
             egetræer.
           </p>
         </FadeIn>

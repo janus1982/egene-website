@@ -5,7 +5,7 @@ import FadeIn from "../components/FadeIn";
 
 export const metadata = {
   title: "Championat",
-  description: "Egene Rideklubs championat — point, stævner og kåringer for klubbens ryttere.",
+  description: "Egene Rideklubs championat - point, stævner og kåringer for klubbens ryttere.",
 };
 
 export default function Championat() {

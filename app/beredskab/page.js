@@ -5,7 +5,7 @@ import FadeIn from "../components/FadeIn";
 
 export const metadata = {
   title: "Beredskab",
-  description: "Beredskabsplan for Egene Rideklub — hvad du gør ved ulykke, brand eller anden nødsituation.",
+  description: "Beredskabsplan for Egene Rideklub - hvad du gør ved ulykke, brand eller anden nødsituation.",
 };
 
 export default function Beredskab() {
@@ -30,7 +30,7 @@ export default function Beredskab() {
         <FadeIn>
           <h2 className="text-2xl font-bold text-green-900 mb-4">Sådan handler du</h2>
           <ul className="space-y-3 text-gray-600 leading-relaxed list-disc pl-5">
-            <li>Skab ro og overblik — undgå at sætte dig selv i fare.</li>
+            <li>Skab ro og overblik - undgå at sætte dig selv i fare.</li>
             <li>Ring 112 ved personskade eller brand, og oplys adressen.</li>
             <li>Tilkald personale eller en voksen med det samme.</li>
             <li>Førstehjælpskasse og brandslukker findes i [placering].</li>

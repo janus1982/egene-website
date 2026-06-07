@@ -52,8 +52,8 @@ const jsonLd = {
   email: "kontakt@egene.dk",
   url: "https://egene.dk",
   sameAs: [
-    "https://www.facebook.com/pages/Ridecentret-Egene/141125835941239",
-    "https://www.instagram.com/egeneridecenter_/",
+    "https://www.facebook.com/groups/88953719351",
+    "https://www.instagram.com/teamegene/",
   ],
 };
 

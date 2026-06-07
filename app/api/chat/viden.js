@@ -1,5 +1,5 @@
 // ALT viden om Egene Rideklub som chatbotten kender.
-// Rediger frit i teksten nedenfor — skriv i korte, klare sætninger med tydelige
+// Rediger frit i teksten nedenfor - skriv i korte, klare sætninger med tydelige
 // overskrifter. Gem, test lokalt, og push for at få det live.
 
 export const EGENE_VIDEN = `
@@ -14,7 +14,7 @@ niveauer. Egene er en springstald, og springning præger hele stedet.
 Egene er et ridecenter præget af høj etik og moral, med fokus på hestevelfærd og
 fællesskab, hvor alle passer på hinanden og tager et fælles ansvar. Vi ønsker at skabe et
 højt fagligt niveau, hvor langsigtet læring prioriteres frem for hurtige resultater. Der
-skal være en rød tråd mellem undervisningen i rideskolen og i konkurrencestalden — et
+skal være en rød tråd mellem undervisningen i rideskolen og i konkurrencestalden - et
 miljø, hvor vi vægter både børns og hestes trivsel samt de gode resultater.
 
 === KONTAKT ===
@@ -24,13 +24,13 @@ mellem nr. 135 og 137.
 CHR-nummer: 128903
 Telefon: 27 14 01 33 (Sigurd Nielsen)
 Email: kontakt@egene.dk
-Rideskolen: rideskolen@egene.dk — Martine Sandberg, 2288 0707
+Rideskolen: rideskolen@egene.dk - Martine Sandberg, 2288 0707
 Bestyrelsen: bestyrelsen@egene.dk
 Championat: championat@egene.dk
 Stævne: staevne@egene-ridecenter.dk
 Kasserer / udmelding: kasserer@egene.dk
-Facebook: facebook.com/pages/Ridecentret-Egene/141125835941239
-Instagram: instagram.com/egeneridecenter_
+Facebook: facebook.com/groups/88953719351
+Instagram: instagram.com/teamegene
 
 === BESTYRELSE ===
 Formand: Janus Fabricius Kierkegaard
@@ -147,11 +147,11 @@ To kategorier: Pony spring og Hest spring. Point optjenes ved placering, fejlfri
 eller stilspringskarakter på 8,0 og derover. Spørgsmål: championat@egene.dk
 
 === SAMARBEJDSPARTNERE ===
-Hillerød Sporthorses ApS v. Ulrich Gaarslev — køb/salg og stævner.
-ProAlign — fysioterapi, Egenes medlemmer får rabat.
+Hillerød Sporthorses ApS v. Ulrich Gaarslev - køb/salg og stævner.
+ProAlign - fysioterapi, Egenes medlemmer får rabat.
 Dyrlæger: IKeyVet (5084 9849), Hørsholm Hestepraksis (4828 0094), Linus Camitz (2042 9033).
 Beslagsmed: Peter Moos (2083 6581).
-Udstyr: Tattersall Rideudstyr ApS (4550 5454) — Egeneryttere får 10% rabat.
+Udstyr: Tattersall Rideudstyr ApS (4550 5454) - Egeneryttere får 10% rabat.
 Hestetandlæge: Hestetandklinikken v. Jesper Rosenmeier (5383 4378).
 Sadelmager: Hestenes Sadelmager v. Maria Maj Mogensen (2343 3022).
 `;

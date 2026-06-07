@@ -5,7 +5,7 @@ import FadeIn from "../components/FadeIn";
 
 export const metadata = {
   title: "Om os",
-  description: "Om Egene Rideklub i Holte — historien, visionen, bestyrelsen og menneskene bag et ridecenter i særklasse.",
+  description: "Om Egene Rideklub i Holte - historien, visionen, bestyrelsen og menneskene bag et ridecenter i særklasse.",
 };
 
 const bestyrelse = [
@@ -18,12 +18,12 @@ const bestyrelse = [
 
 const partnere = [
   { navn: "Hillerød Sporthorses ApS v. Ulrich Gaarslev", tekst: "Køb/salg og stævner" },
-  { navn: "ProAlign", tekst: "Fysioterapi — Egenes medlemmer får rabat" },
+  { navn: "ProAlign", tekst: "Fysioterapi - Egenes medlemmer får rabat" },
   { navn: "IKeyVet", tekst: "Dyrlæge · 5084 9849" },
   { navn: "Hørsholm Hestepraksis", tekst: "Dyrlæge · 4828 0094" },
   { navn: "Linus Camitz", tekst: "Dyrlæge · 2042 9033" },
   { navn: "Peter Moos", tekst: "Beslagsmed · 2083 6581" },
-  { navn: "Tattersall Rideudstyr ApS", tekst: "Udstyr · 4550 5454 — Egeneryttere får 10% rabat" },
+  { navn: "Tattersall Rideudstyr ApS", tekst: "Udstyr · 4550 5454 - Egeneryttere får 10% rabat" },
   { navn: "Hestetandklinikken v. Jesper Rosenmeier", tekst: "Hestetandlæge · 5383 4378" },
   { navn: "Hestenes Sadelmager v. Maria Maj Mogensen", tekst: "Sadelmager · 2343 3022" },
 ];
@@ -58,14 +58,14 @@ export default function OmOs() {
             og fællesskab, hvor alle passer på hinanden og tager et fælles ansvar. Vi
             ønsker at skabe et højt fagligt niveau, hvor langsigtet læring prioriteres frem
             for hurtige resultater. Der skal være en rød tråd mellem undervisningen i
-            rideskolen og undervisningen i konkurrencestalden — et miljø, hvor vi vægter
+            rideskolen og undervisningen i konkurrencestalden - et miljø, hvor vi vægter
             både børns og hestes trivsel, samt de gode resultater.
           </p>
           <blockquote className="border-l-4 border-green-700 bg-green-50/70 rounded-r-2xl px-6 py-5 mt-6 italic text-green-900">
             «På Egene prioriterer vi faglighed frem for hurtige resultater, da vi tror på
             at korrekt uddannelse af hest og rytter skaber resultaterne på sigt.»
             <footer className="mt-2 text-sm not-italic text-green-700">
-              — Martine og Sigurd, april 2015
+              - Martine og Sigurd, april 2015
             </footer>
           </blockquote>
         </FadeIn>

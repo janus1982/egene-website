@@ -30,7 +30,7 @@ html {
   animation: fade-up 0.9s ease-out both;
 }
 
-/* Logo i navigationen — skifter mellem hvid (over hero) og original grøn (over lys header) */
+/* Logo i navigationen - skifter mellem hvid (over hero) og original grøn (over lys header) */
 .logo-lys {
   filter: brightness(0) invert(1);
   transition: filter 0.3s ease;
