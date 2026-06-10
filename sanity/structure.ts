@@ -9,4 +9,16 @@ export const structure: StructureResolver = (S) =>
       S.documentTypeListItem('underviser').title('Undervisere'),
       S.documentTypeListItem('pony').title('Ponyer & heste'),
       S.documentTypeListItem('nyhed').title('Nyheder'),
+      S.divider(),
+      S.listItem()
+        .title('Championat')
+        .child(
+          S.list()
+            .title('Championat')
+            .items([
+              S.documentTypeListItem('championatSaeson').title('Sæsoner'),
+              S.documentTypeListItem('championatResultat').title('Resultater'),
+              S.documentTypeListItem('championatHistorik').title('Historik (tidligere år)'),
+            ])
+        ),
     ])

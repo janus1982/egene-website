@@ -80,20 +80,20 @@ export default function ChatBot() {
 
   return (
     <>
-      {/* Boble */}
+      {/* Boble - Egenes logo */}
       {!open && (
         <button
           onClick={() => setOpen(true)}
           aria-label="Åbn chat"
-          className="fixed bottom-5 right-5 z-[60] bg-green-800 hover:bg-green-700 text-white rounded-full w-14 h-14 shadow-lg flex items-center justify-center text-2xl transition-colors"
+          className="fixed bottom-5 right-5 z-[60] bg-white hover:bg-green-50 rounded-full w-14 h-14 shadow-lg border border-green-200 flex items-center justify-center transition-colors"
         >
-          💬
+          <Image src="/logo.png" alt="Chat med Egene Rideklub" width={40} height={40} className="object-contain" />
         </button>
       )}
 
-      {/* Chatvindue */}
+      {/* Chatvindue - kompakt på mobil (dvh tager højde for mobilens adresselinje) */}
       {open && (
-        <div className="fixed bottom-5 right-5 z-[60] w-[350px] max-w-[calc(100vw-2.5rem)] h-[500px] max-h-[calc(100vh-2.5rem)] bg-white rounded-2xl shadow-2xl flex flex-col overflow-hidden border border-green-100">
+        <div className="fixed bottom-4 right-4 left-4 sm:left-auto z-[60] sm:w-[350px] h-[65dvh] sm:h-[500px] max-h-[calc(100dvh-5rem)] bg-white rounded-2xl shadow-2xl flex flex-col overflow-hidden border border-green-100">
           {/* Header */}
           <div className="bg-green-900 text-white px-4 py-3 flex items-center justify-between">
             <div className="flex items-center gap-2">

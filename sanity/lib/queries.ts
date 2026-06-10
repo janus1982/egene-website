@@ -38,3 +38,21 @@ export async function getNyheder(antal = 6) {
 export async function getHold() {
   return client.fetch(HOLD_QUERY, {}, options)
 }
+
+// ---- Championat ----
+
+const AKTIV_SAESON_QUERY = `*[_type == "championatSaeson" && aktiv == true][0]{_id, aar}`
+
+const RESULTATER_QUERY = `*[_type == "championatResultat" && saeson._ref == $saesonId]{
+  rytter, hest, kategori, beregnede_point
+}`
+
+// Opdateres maks én gang i timen
+const championatOptions = {next: {revalidate: 3600}}
+
+export async function getChampionat() {
+  const saeson = await client.fetch(AKTIV_SAESON_QUERY, {}, championatOptions)
+  if (!saeson) return {saeson: null, resultater: []}
+  const resultater = await client.fetch(RESULTATER_QUERY, {saesonId: saeson._id}, championatOptions)
+  return {saeson, resultater}
+}
