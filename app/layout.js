@@ -33,6 +33,16 @@ export const metadata = {
     icon: "/favicon.ico",
     apple: "/apple-touch-icon.png",
   },
+  manifest: "/manifest.json",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "Egene",
+  },
+};
+
+export const viewport = {
+  themeColor: "#14532d",
 };
 
 // Strukturerede data til Google (LocalBusiness / SportsClub)
