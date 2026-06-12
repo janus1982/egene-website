@@ -68,6 +68,24 @@ export default function Platform() {
     setBesked(error ? `Fejl: ${error.message}` : "Tjek din mail - vi har sendt dig et login-link.");
   }
 
+  // iPhone-app-fix: Safari og hjemmeskærms-appen deler ikke login på iOS.
+  // Brugeren kan kopiere linket fra mailen og indsætte det her - så logger appen selv ind.
+  const [linkTekst, setLinkTekst] = useState("");
+  async function logIndMedLink(e) {
+    e.preventDefault();
+    setBesked("");
+    try {
+      const url = new URL(linkTekst.trim());
+      const tokenHash = url.searchParams.get("token") || url.searchParams.get("token_hash");
+      if (!tokenHash) throw new Error("Kunne ikke finde koden i linket");
+      let { error } = await supabase.auth.verifyOtp({ type: "magiclink", token_hash: tokenHash });
+      if (error) ({ error } = await supabase.auth.verifyOtp({ type: "email", token_hash: tokenHash }));
+      setBesked(error ? `Fejl: ${error.message}` : "");
+    } catch (err) {
+      setBesked(`Fejl: ${err.message}`);
+    }
+  }
+
   async function aktiverPush() {
     setPushStatus("");
     try {
@@ -141,6 +159,28 @@ export default function Platform() {
               </button>
             </form>
             {besked && <p className="text-sm text-green-700 mt-3">{besked}</p>}
+
+            <details className="mt-5">
+              <summary className="text-sm text-green-800 cursor-pointer">
+                Logger du ind i appen på iPhone? Tryk her
+              </summary>
+              <p className="text-gray-600 text-xs mt-2 mb-2">
+                Hold fingeren på login-knappen/linket i mailen, vælg "Kopiér link",
+                og indsæt det her:
+              </p>
+              <form onSubmit={logIndMedLink} className="flex flex-col gap-2">
+                <textarea
+                  rows={3}
+                  value={linkTekst}
+                  onChange={(e) => setLinkTekst(e.target.value)}
+                  placeholder="Indsæt linket fra mailen..."
+                  className="rounded-xl border border-green-200 px-3 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-green-300"
+                />
+                <button type="submit" className="bg-green-100 hover:bg-green-200 text-green-900 rounded-xl px-4 py-2 text-sm font-medium transition-colors">
+                  Log ind med linket
+                </button>
+              </form>
+            </details>
           </div>
         )}
 
