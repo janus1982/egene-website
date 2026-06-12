@@ -246,11 +246,13 @@ export default function Platform() {
   if (!klar) return <main className="min-h-screen bg-green-50/40" />;
 
   // ---------- Opslagskort (genbruges af begge faner) ----------
-  function OpslagKort({ o }) {
+  // NB: almindelig funktion (ikke komponent) - ellers genskabes felterne ved
+  // hvert tastetryk og input-fokus ryger.
+  function kort(o) {
     const erHold = o.scope === "hold";
     const holdNavn = erHold ? holdListe.find((h) => h.id === o.hold_id)?.name : null;
     return (
-      <article className="bg-white rounded-2xl shadow-sm border border-green-100 p-4">
+      <article key={o.id} className="bg-white rounded-2xl shadow-sm border border-green-100 p-4">
         <div className="flex items-baseline justify-between gap-2">
           <p className="font-semibold text-green-900 text-sm">{navnFor(o.author_id)}</p>
           <p className="text-gray-400 text-xs shrink-0">{datoKort(o.created_at)}</p>
@@ -410,7 +412,7 @@ export default function Platform() {
                 {vaegOpslag.length === 0 ? (
                   <p className="text-gray-500 text-sm">Ingen opslag endnu.</p>
                 ) : (
-                  <div className="space-y-3">{vaegOpslag.map((o) => <OpslagKort key={o.id} o={o} />)}</div>
+                  <div className="space-y-3">{vaegOpslag.map((o) => kort(o))}</div>
                 )}
               </>
             )}
@@ -447,7 +449,7 @@ export default function Platform() {
                 {direkteOpslag.length === 0 ? (
                   <p className="text-gray-500 text-sm">Ingen beskeder endnu.</p>
                 ) : (
-                  <div className="space-y-3">{direkteOpslag.map((o) => <OpslagKort key={o.id} o={o} />)}</div>
+                  <div className="space-y-3">{direkteOpslag.map((o) => kort(o))}</div>
                 )}
               </>
             )}
