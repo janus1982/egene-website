@@ -22,6 +22,8 @@ export default function SiteFooter() {
             <li><Link href="/rideskole" className="hover:text-white">Rideskole</Link></li>
             <li><Link href="/opstaldning" className="hover:text-white">Opstaldning</Link></li>
             <li><Link href="/spring" className="hover:text-white">Spring & stævner</Link></li>
+            <li><Link href="/shop" className="hover:text-white">Webshop</Link></li>
+            <li><Link href="/platform" className="hover:text-white">Medlemmer (log ind)</Link></li>
             <li><Link href="/kontakt" className="hover:text-white">Kontakt</Link></li>
           </ul>
         </div>

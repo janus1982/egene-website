@@ -13,6 +13,7 @@ const links = [
   { href: "/sponsorer", label: "Sponsorer" },
   { href: "/shop", label: "Webshop" },
   { href: "/kontakt", label: "Kontakt" },
+  { href: "/platform", label: "Medlemmer" },
 ];
 
 export default function SiteNav() {
