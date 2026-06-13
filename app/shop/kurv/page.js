@@ -38,6 +38,9 @@ export default function Kurv() {
     <main className="text-[#1a1a1a] min-h-screen">
       <SiteNav />
       <div className="max-w-2xl mx-auto px-6 py-28">
+        <Link href="/shop" className="inline-flex items-center gap-1 text-green-800 hover:text-green-600 text-sm mb-6">
+          ← Fortsæt med at handle
+        </Link>
         <h1 className="text-3xl font-bold text-green-900 mb-8">Din bestilling</h1>
 
         {sendt ? (

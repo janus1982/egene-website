@@ -83,31 +83,32 @@ export default function Platform() {
     return medlemmer.find((m) => m.id === id)?.full_name ?? "Ukendt";
   };
 
-  // ---------- Login ----------
-  async function sendMagicLink(e) {
+  // ---------- Login (e-mail -> 6-cifret kode) ----------
+  const [kodeTrin, setKodeTrin] = useState(false);
+  const [kode, setKode] = useState("");
+
+  async function sendKode(e) {
     e.preventDefault();
     setBesked("");
-    const { error } = await supabase.auth.signInWithOtp({
-      email: email.trim(),
-      options: { emailRedirectTo: `${window.location.origin}/platform` },
-    });
-    setBesked(error ? `Fejl: ${error.message}` : "Tjek din mail - vi har sendt dig et login-link.");
+    const { error } = await supabase.auth.signInWithOtp({ email: email.trim() });
+    if (error) {
+      setBesked(`Fejl: ${error.message}`);
+    } else {
+      setKodeTrin(true);
+      setBesked("Vi har sendt en kode til din mail. Tjek din indbakke.");
+    }
   }
 
-  const [linkTekst, setLinkTekst] = useState("");
-  async function logIndMedLink(e) {
+  async function verificerKode(e) {
     e.preventDefault();
     setBesked("");
-    try {
-      const url = new URL(linkTekst.trim());
-      const tokenHash = url.searchParams.get("token") || url.searchParams.get("token_hash");
-      if (!tokenHash) throw new Error("Kunne ikke finde koden i linket");
-      let { error } = await supabase.auth.verifyOtp({ type: "magiclink", token_hash: tokenHash });
-      if (error) ({ error } = await supabase.auth.verifyOtp({ type: "email", token_hash: tokenHash }));
-      setBesked(error ? `Fejl: ${error.message}` : "");
-    } catch (err) {
-      setBesked(`Fejl: ${err.message}`);
-    }
+    const { error } = await supabase.auth.verifyOtp({
+      email: email.trim(),
+      token: kode.trim(),
+      type: "email",
+    });
+    if (error) setBesked(`Fejl: ${error.message} (tjek koden, eller send en ny)`);
+    // ved succes opdaterer onAuthStateChange sessionen automatisk
   }
 
   async function logUd() {
@@ -299,30 +300,41 @@ export default function Platform() {
       </header>
 
       <div className="max-w-lg mx-auto px-4 py-6">
-        {/* ---------- Login ---------- */}
+        {/* ---------- Login (e-mail -> 6-cifret kode) ---------- */}
         {!session && (
           <div className="bg-white rounded-2xl shadow-sm border border-green-100 p-6 mt-8">
             <h1 className="text-xl font-bold text-green-900 mb-2">Log ind</h1>
-            <p className="text-gray-600 text-sm mb-4">Indtast din e-mail, så sender vi dig et login-link. Ingen adgangskode.</p>
-            <form onSubmit={sendMagicLink} className="flex flex-col gap-3">
-              <input type="email" required value={email} onChange={(e) => setEmail(e.target.value)} placeholder="din@mail.dk"
-                className="rounded-xl border border-green-200 px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-green-300" />
-              <button type="submit" className="bg-green-800 hover:bg-green-700 text-white rounded-xl px-4 py-2.5 text-sm font-medium transition-colors">
-                Send login-link
-              </button>
-            </form>
+            {!kodeTrin ? (
+              <>
+                <p className="text-gray-600 text-sm mb-4">Indtast din e-mail, så sender vi dig en 6-cifret kode. Ingen adgangskode at huske.</p>
+                <form onSubmit={sendKode} className="flex flex-col gap-3">
+                  <input type="email" required value={email} onChange={(e) => setEmail(e.target.value)} placeholder="din@mail.dk"
+                    className="rounded-xl border border-green-200 px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-green-300" />
+                  <button type="submit" className="bg-green-800 hover:bg-green-700 text-white rounded-xl px-4 py-2.5 text-sm font-medium transition-colors">
+                    Send kode
+                  </button>
+                </form>
+              </>
+            ) : (
+              <>
+                <p className="text-gray-600 text-sm mb-4">Vi har sendt en kode til <b>{email}</b>. Skriv de 6 cifre her:</p>
+                <form onSubmit={verificerKode} className="flex flex-col gap-3">
+                  <input
+                    type="text" inputMode="numeric" autoComplete="one-time-code" required
+                    value={kode} onChange={(e) => setKode(e.target.value.replace(/\D/g, "").slice(0, 6))}
+                    placeholder="______"
+                    className="rounded-xl border border-green-200 px-3 py-2.5 text-center text-2xl tracking-[0.4em] focus:outline-none focus:ring-2 focus:ring-green-300"
+                  />
+                  <button type="submit" className="bg-green-800 hover:bg-green-700 text-white rounded-xl px-4 py-2.5 text-sm font-medium transition-colors">
+                    Log ind
+                  </button>
+                  <button type="button" onClick={() => { setKodeTrin(false); setKode(""); setBesked(""); }} className="text-sm text-green-700">
+                    ← Brug en anden e-mail
+                  </button>
+                </form>
+              </>
+            )}
             {besked && <p className="text-sm text-green-700 mt-3">{besked}</p>}
-            <details className="mt-5">
-              <summary className="text-sm text-green-800 cursor-pointer">Logger du ind i appen på iPhone? Tryk her</summary>
-              <p className="text-gray-600 text-xs mt-2 mb-2">Hold fingeren på login-knappen/linket i mailen, vælg "Kopiér link", og indsæt det her:</p>
-              <form onSubmit={logIndMedLink} className="flex flex-col gap-2">
-                <textarea rows={3} value={linkTekst} onChange={(e) => setLinkTekst(e.target.value)} placeholder="Indsæt linket fra mailen..."
-                  className="rounded-xl border border-green-200 px-3 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-green-300" />
-                <button type="submit" className="bg-green-100 hover:bg-green-200 text-green-900 rounded-xl px-4 py-2 text-sm font-medium transition-colors">
-                  Log ind med linket
-                </button>
-              </form>
-            </details>
           </div>
         )}
 
