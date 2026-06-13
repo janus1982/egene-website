@@ -306,7 +306,7 @@ export default function Platform() {
             <h1 className="text-xl font-bold text-green-900 mb-2">Log ind</h1>
             {!kodeTrin ? (
               <>
-                <p className="text-gray-600 text-sm mb-4">Indtast din e-mail, så sender vi dig en 6-cifret kode. Ingen adgangskode at huske.</p>
+                <p className="text-gray-600 text-sm mb-4">Indtast din e-mail, så sender vi dig en login-kode. Ingen adgangskode at huske.</p>
                 <form onSubmit={sendKode} className="flex flex-col gap-3">
                   <input type="email" required value={email} onChange={(e) => setEmail(e.target.value)} placeholder="din@mail.dk"
                     className="rounded-xl border border-green-200 px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-green-300" />
@@ -317,13 +317,13 @@ export default function Platform() {
               </>
             ) : (
               <>
-                <p className="text-gray-600 text-sm mb-4">Vi har sendt en kode til <b>{email}</b>. Skriv de 6 cifre her:</p>
+                <p className="text-gray-600 text-sm mb-4">Vi har sendt en kode til <b>{email}</b>. Skriv koden her:</p>
                 <form onSubmit={verificerKode} className="flex flex-col gap-3">
                   <input
                     type="text" inputMode="numeric" autoComplete="one-time-code" required
-                    value={kode} onChange={(e) => setKode(e.target.value.replace(/\D/g, "").slice(0, 6))}
-                    placeholder="______"
-                    className="rounded-xl border border-green-200 px-3 py-2.5 text-center text-2xl tracking-[0.4em] focus:outline-none focus:ring-2 focus:ring-green-300"
+                    value={kode} onChange={(e) => setKode(e.target.value.replace(/\D/g, "").slice(0, 8))}
+                    placeholder="________"
+                    className="rounded-xl border border-green-200 px-3 py-2.5 text-center text-2xl tracking-[0.3em] focus:outline-none focus:ring-2 focus:ring-green-300"
                   />
                   <button type="submit" className="bg-green-800 hover:bg-green-700 text-white rounded-xl px-4 py-2.5 text-sm font-medium transition-colors">
                     Log ind
