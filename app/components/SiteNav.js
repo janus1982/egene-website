@@ -11,6 +11,7 @@ const links = [
   { href: "/om-os", label: "Om os" },
   { href: "/nyheder", label: "Nyheder" },
   { href: "/sponsorer", label: "Sponsorer" },
+  { href: "/shop", label: "Webshop" },
   { href: "/kontakt", label: "Kontakt" },
 ];
 

@@ -9,6 +9,7 @@ export const structure: StructureResolver = (S) =>
       S.documentTypeListItem('underviser').title('Undervisere'),
       S.documentTypeListItem('pony').title('Ponyer & heste'),
       S.documentTypeListItem('nyhed').title('Nyheder'),
+      S.documentTypeListItem('produkt').title('Webshop'),
       S.divider(),
       S.listItem()
         .title('Championat')

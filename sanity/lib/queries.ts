@@ -39,6 +39,16 @@ export async function getHold() {
   return client.fetch(HOLD_QUERY, {}, options)
 }
 
+// ---- Webshop ----
+
+const PRODUKTER_QUERY = `*[_type == "produkt"] | order(sorteringsorden asc){
+  _id, navn, beskrivelse, pris, stoerrelser, paaLager, billede
+}`
+
+export async function getProdukter() {
+  return client.fetch(PRODUKTER_QUERY, {}, options)
+}
+
 // ---- Championat ----
 
 const AKTIV_SAESON_QUERY = `*[_type == "championatSaeson" && aktiv == true][0]{_id, aar}`

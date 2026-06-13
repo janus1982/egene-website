@@ -7,6 +7,7 @@ import {holdType} from './hold'
 import {championatSaesonType} from './championatSaeson'
 import {championatResultatType} from './championatResultat'
 import {championatHistorikType} from './championatHistorik'
+import {produktType} from './produkt'
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -17,5 +18,6 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     championatSaesonType,
     championatResultatType,
     championatHistorikType,
+    produktType,
   ],
 }
